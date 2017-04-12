@@ -16,6 +16,7 @@ var layoutInfo = {
 		headerLeft: 0,
 		c1Top: 5,
 		c1Left: 8,
+		c1FontSize: 16,
 		c2Top: 5,
 		c2Left: 200,
 	},
@@ -29,6 +30,7 @@ var layoutInfo = {
 		headerLeft: '-650px',
 		c1Top: 10,
 		c1Left: 10,
+		c1FontSize: 18,
 		c2Top: 37,
 		c2Left: 10,
 	}
@@ -85,7 +87,8 @@ function layout(sel){
 
 	d3.selectAll('.c1').transition().duration(animTime)
 		.style('top', l.c1Top)
-		.style('left', l.c1Left);
+		.style('left', l.c1Left)
+		.style('font-size', l.c1FontSize);
 	d3.selectAll('.c2').transition().duration(animTime)
 		.style('top', l.c2Top)
 		.style('left', l.c2Left);
