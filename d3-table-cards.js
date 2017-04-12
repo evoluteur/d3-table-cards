@@ -93,4 +93,10 @@ function layout(sel){
 	d3.select('.header').transition().duration(animTime)
 		.style('opacity', l.headerOpacity)
 		.style('left', l.headerLeft);
+
+	var totalHeight = (curStyle==='card' ?
+			Math.ceil(data.length/cardsPerRow)*90
+			 : 40+data.length*29)+20;
+	d3.select('.holder').transition().duration(animTime)
+		.style('height', totalHeight);
 }
