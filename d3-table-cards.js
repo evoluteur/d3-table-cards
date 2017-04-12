@@ -22,7 +22,7 @@ var layoutInfo = {
 	card: {
 		height: 80,
 		width: 188,
-		radius: 7,
+		radius: '5px',
 		top: function(d){return Math.floor(d.idx/cardsPerRow)*90+'px'},
 		left: function(d){return (d.idx%cardsPerRow)*200+'px'},
 		headerOpacity: 0,
@@ -35,8 +35,8 @@ var layoutInfo = {
 };
 
 function getLayoutInfo(style){
-	var w = window.innerWidth -80;
-	cardsPerRow = Math.floor(w/layoutInfo.card.width);
+	var w = window.innerWidth -20;
+	cardsPerRow = Math.floor(w/200);
 	return layoutInfo[style];
 }
 
