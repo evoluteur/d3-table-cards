@@ -27,7 +27,7 @@ var layoutInfo = {
 		top: function(d){return Math.floor(d.idx/cardsPerRow)*90+'px'},
 		left: function(d){return (d.idx%cardsPerRow)*200+'px'},
 		headerOpacity: 0,
-		headerLeft: '-650px',
+		headerLeft: -650,
 		c1Top: 10,
 		c1Left: 10,
 		c1FontSize: 18,
@@ -78,6 +78,8 @@ function sort(key){
 
 function layout(sel){
 	var l=getLayoutInfo(curStyle);
+	var t = d3.transition()
+    		.duration(animTime)
 	
 	sel.style('left', l.left)
 		.style('top', l.top)
@@ -85,21 +87,21 @@ function layout(sel){
 		.style('width', l.width)
 		.style('border-radius', l.radius);
 
-	d3.selectAll('.c1').transition().duration(animTime)
+	d3.selectAll('.c1').transition(t)
 		.style('top', l.c1Top)
 		.style('left', l.c1Left)
 		.style('font-size', l.c1FontSize);
-	d3.selectAll('.c2').transition().duration(animTime)
+	d3.selectAll('.c2').transition(t)
 		.style('top', l.c2Top)
 		.style('left', l.c2Left);
 
-	d3.select('.header').transition().duration(animTime)
+	d3.select('.header').transition(t)
 		.style('opacity', l.headerOpacity)
 		.style('left', l.headerLeft);
 
-	var totalHeight = (curStyle==='card' ?
+	var totalHeight = 20+(curStyle==='card' ?
 			Math.ceil(data.length/cardsPerRow)*90
-			 : 40+data.length*29)+20;
-	d3.select('.holder').transition().duration(animTime)
+			 : 40+data.length*29);
+	d3.select('.holder').transition(t)
 		.style('height', totalHeight);
 }
