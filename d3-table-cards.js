@@ -7,43 +7,53 @@ var cardsPerRow = 3;
 
 var layoutInfo = {
 	table: {
-		height: 28,
-		width: 590,
-		radius: 0,
+		// ---- row position & size
 		top: function(d){return 40+d.idx*29+'px'},
 		left: 0,
+		height: 28,
+		width: 590,
+		// ---- row border-radius
+		radius: 0,
+		// ---- table header
 		headerOpacity: 1,
 		headerLeft: 0,
+		// ---- column 1
 		c1Top: 5,
 		c1Left: 8,
 		c1FontSize: 16,
+		// ---- column 2
 		c2Top: 5,
 		c2Left: 200,
 	},
 	card: {
-		height: 80,
-		width: 188,
-		radius: '5px',
+		// ---- card position & size
 		top: function(d){return Math.floor(d.idx/cardsPerRow)*90+'px'},
 		left: function(d){return (d.idx%cardsPerRow)*200+'px'},
+		height: 80,
+		width: 188,
+		// ---- card border-radius
+		radius: '5px',
+		// ---- table header (hidden)
 		headerOpacity: 0,
 		headerLeft: -650,
+		// ---- line 1
 		c1Top: 10,
 		c1Left: 10,
 		c1FontSize: 18,
+		// ---- line 2
 		c2Top: 37,
 		c2Left: 10,
 	}
 };
 
 function getLayoutInfo(style){
-	var w = window.innerWidth -20;
-	cardsPerRow = Math.floor(w/200);
+	var width = window.innerWidth -20;
+	cardsPerRow = Math.floor(width/200);
 	return layoutInfo[style];
 }
 
 function render(){
-	var l=getLayoutInfo(curStyle);
+	var l = getLayoutInfo(curStyle);
 	var sel = d3.select('.holder').selectAll('.item')
 		.data(data)
 		.enter()
@@ -63,13 +73,13 @@ function redraw(style){
 		.transition().duration(animTime));
 }
 function sort(key){
-	var l=getLayoutInfo(curStyle);
-	var data2 = data.sort(key=='chakra' ? function (a, b) {
+	var l = getLayoutInfo(curStyle);
+	data.sort(key=='chakra' ? function (a, b) {
 			return (a.chakra+a.name).localeCompare(b.chakra+b.name);
 		} : function (a, b) {
 		  return a.name.localeCompare(b.name);
 		});
-	data2.forEach(function(d,idx){
+	data.forEach(function(d, idx){
 		d.idx=idx;
 	});
 	layout(d3.select('.holder').selectAll('.item')
@@ -77,9 +87,8 @@ function sort(key){
 }
 
 function layout(sel){
-	var l=getLayoutInfo(curStyle);
-	var t = d3.transition()
-    		.duration(animTime)
+	var l = getLayoutInfo(curStyle),
+		t = d3.transition().duration(animTime);
 	
 	sel.style('left', l.left)
 		.style('top', l.top)
@@ -102,6 +111,7 @@ function layout(sel){
 	var totalHeight = 20+(curStyle==='card' ?
 			Math.ceil(data.length/cardsPerRow)*90
 			 : 40+data.length*29);
+
 	d3.select('.holder').transition(t)
 		.style('height', totalHeight);
 }
