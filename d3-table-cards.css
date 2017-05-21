@@ -36,7 +36,9 @@ h1{
 	width: 194px;
 	line-height: 18px;
 }
-
+.header.sortable > div{
+	cursor: pointer;
+}
 .item {
 	position: absolute;
 	border: solid 1px silver;

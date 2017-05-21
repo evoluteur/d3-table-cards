@@ -1,10 +1,6 @@
 // https://github.com/evoluteur/d3-table-cards
 // (c) 2017 Olivier Giulieri
 
-var animTime = 750;
-var curStyle = 'table'; // "table" or "card"
-var cardsPerRow = 3;
-
 var layoutInfo = {
 	table: {
 		// ---- row position & size
@@ -25,7 +21,7 @@ var layoutInfo = {
 		c2Top: 5,
 		c2Left: 200,
 	},
-	card: {
+	cards: {
 		// ---- card position & size
 		top: function(d){return Math.floor(d.idx/cardsPerRow)*90+'px'},
 		left: function(d){return (d.idx%cardsPerRow)*200+'px'},
@@ -46,6 +42,13 @@ var layoutInfo = {
 	}
 };
 
+var selector = '.holder';
+var curStyle = 'cards'; // "table" or "cards"
+var animTime = 650;
+
+var holder;
+var cardsPerRow = 3;
+
 function getLayoutInfo(style){
 	var width = window.innerWidth -20;
 	cardsPerRow = Math.floor(width/200);
@@ -54,23 +57,26 @@ function getLayoutInfo(style){
 
 function render(){
 	var l = getLayoutInfo(curStyle);
-	var sel = d3.select('.holder').selectAll('.item')
+	holder=d3.select(selector);
+	var sel = holder.selectAll('.item')
 		.data(data)
 		.enter()
 		.append('div').attr('class', function(d){return 'item chakra'+d.chakra});
 
-	sel.insert('div').attr('class', 'c1').html(function(d){return d.name})
-		.style('top', l.c1Top);
-	sel.insert('div').attr('class', 'c2').html(function(d){return d.spirit})
-		.style('top', l.c2Top);
+	sel.insert('div').attr('class', 'c1').style('top', l.c1Top)
+		.html(function(d){return d.name});
+	sel.insert('div').attr('class', 'c2').style('top', l.c2Top)
+		.html(function(d){return d.spirit});
 
-	layout(sel);
+	data.forEach(function(d, idx){
+	  d.idx=idx;
+	});
+	layout(true, false);
 }
 
 function redraw(style){
 	curStyle = style || curStyle;
-	layout(d3.select('.holder').selectAll('.item')
-		.transition().duration(animTime));
+	layout();
 }
 function sort(key){
 	var l = getLayoutInfo(curStyle);
@@ -82,36 +88,38 @@ function sort(key){
 	data.forEach(function(d, idx){
 		d.idx=idx;
 	});
-	layout(d3.select('.holder').selectAll('.item')
-		.transition().duration(animTime));
+	layout(false, true);
 }
 
-function layout(sel){
+function layout(skipAnim, skipChildren){
 	var l = getLayoutInfo(curStyle),
-		t = d3.transition().duration(animTime);
-	
-	sel.style('left', l.left)
+		t = d3.transition().duration(skipAnim ? 0 : animTime);
+
+	holder.selectAll('.item').transition(t)
+		.style('left', l.left)
 		.style('top', l.top)
 		.style('height', l.height)
 		.style('width', l.width)
 		.style('border-radius', l.radius);
 
-	d3.selectAll('.c1').transition(t)
-		.style('top', l.c1Top)
-		.style('left', l.c1Left)
-		.style('font-size', l.c1FontSize);
-	d3.selectAll('.c2').transition(t)
-		.style('top', l.c2Top)
-		.style('left', l.c2Left);
+	if(!skipChildren){
+		holder.selectAll('.c1').transition(t)
+			.style('top', l.c1Top)
+			.style('left', l.c1Left)
+			.style('font-size', l.c1FontSize);
+		holder.selectAll('.c2').transition(t)
+			.style('top', l.c2Top)
+			.style('left', l.c2Left);
 
-	d3.select('.header').transition(t)
-		.style('opacity', l.headerOpacity)
-		.style('left', l.headerLeft);
+		holder.select('.header').transition(t)
+			.style('opacity', l.headerOpacity)
+			.style('left', l.headerLeft);
 
-	var totalHeight = 20+(curStyle==='card' ?
-			Math.ceil(data.length/cardsPerRow)*90
-			 : 40+data.length*29);
+		var totalHeight = 20+(curStyle==='cards' ?
+				Math.ceil(data.length/cardsPerRow)*90
+				 : 40+data.length*29);
 
-	d3.select('.holder').transition(t)
-		.style('height', totalHeight);
+		d3.select('.holder').transition(t)
+			.style('height', totalHeight);
+	}
 }
