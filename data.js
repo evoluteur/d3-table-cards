@@ -195,6 +195,3 @@ var data=[
     "spirit": "Recovery"
   }
 ];
-data.forEach(function(d, idx){
-  d.idx=idx;
-});
