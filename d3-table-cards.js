@@ -119,7 +119,7 @@ function layout(skipAnim, skipChildren){
 				Math.ceil(data.length/cardsPerRow)*90
 				 : 40+data.length*29);
 
-		d3.select('.holder').transition(t)
+		holder.transition(t)
 			.style('height', totalHeight);
 	}
 }
