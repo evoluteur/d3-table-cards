@@ -4,7 +4,7 @@
 var layoutInfo = {
 	table: {
 		// ---- row position & size
-		top: function(d){return 40+d.idx*29+'px'},
+		top: function(d, i){return 40+i*29+'px'},
 		left: 0,
 		height: 28,
 		width: 590,
@@ -23,8 +23,8 @@ var layoutInfo = {
 	},
 	cards: {
 		// ---- card position & size
-		top: function(d){return Math.floor(d.idx/cardsPerRow)*90+'px'},
-		left: function(d){return (d.idx%cardsPerRow)*200+'px'},
+		top: function(d, i){return Math.floor(i/cardsPerRow)*90+'px'},
+		left: function(d, i){return (i%cardsPerRow)*200+'px'},
 		height: 80,
 		width: 188,
 		// ---- card border-radius
@@ -57,9 +57,9 @@ function getLayoutInfo(style){
 
 function render(){
 	var l = getLayoutInfo(curStyle);
-	holder=d3.select(selector);
+	holder = d3.select(selector);
 	var sel = holder.selectAll('.item')
-		.data(data)
+		.data(data, function(d){return d.name})
 		.enter()
 		.append('div').attr('class', function(d){return 'item chakra'+d.chakra});
 
@@ -68,9 +68,6 @@ function render(){
 	sel.insert('div').attr('class', 'c2').style('top', l.c2Top)
 		.html(function(d){return d.spirit});
 
-	data.forEach(function(d, idx){
-	  d.idx=idx;
-	});
 	layout(true, false);
 }
 
@@ -78,6 +75,7 @@ function redraw(style){
 	curStyle = style || curStyle;
 	layout();
 }
+
 function sort(key){
 	var l = getLayoutInfo(curStyle);
 	data.sort(key=='chakra' ? function (a, b) {
@@ -85,9 +83,6 @@ function sort(key){
 		} : function (a, b) {
 		  return a.name.localeCompare(b.name);
 		});
-	data.forEach(function(d, idx){
-		d.idx=idx;
-	});
 	layout(false, true);
 }
 
@@ -95,7 +90,9 @@ function layout(skipAnim, skipChildren){
 	var l = getLayoutInfo(curStyle),
 		t = d3.transition().duration(skipAnim ? 0 : animTime);
 
-	holder.selectAll('.item').transition(t)
+	holder.selectAll('.item')
+		.data(data, function(d){return d.name})
+		.transition(t)
 		.style('left', l.left)
 		.style('top', l.top)
 		.style('height', l.height)
