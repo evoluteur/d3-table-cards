@@ -1,21 +1,4 @@
-body{
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 20px;
-    min-height: 1250px;
-}
-h1{
-	margin-bottom: 40px;
-}
 
-#opts{
-	position: absolute;
-	top: 10px;
-	right: 20px;
-	background-color: white;
-}
-#opts > div{
-	padding:5px;
-}
 
 .holder{
 	position: relative;
@@ -51,50 +34,3 @@ h1{
 .c1{
 	font-weight: bold;
 }
-
-
-/* gemstones */
-.chakra1{
-	border-left: solid 7px #f44336;
-}
-.chakra2{
-	border-left: solid 7px #ff9800;
-}
-.chakra3{
-	border-left: solid 7px #ffc107;
-}
-.chakra4{
-	border-left: solid 7px #4caf50;
-}
-.chakra5{
-	border-left: solid 7px #00bcd4;
-}
-.chakra6{
-	border-left: solid 7px #3f51b5;
-}
-.chakra7{
-	border-left: solid 7px #9c27b0;
-}
-/*
-.chakra1:hover{
-	background-color: #ffebee;
-}
-.chakra2:hover{
-	background-color: #fff3e0;
-}
-.chakra3:hover{
-	background-color: #fff8e1;
-}
-.chakra4:hover{
-	background-color: #e8f5e9;
-}
-.chakra5:hover{
-	background-color: #e0f7fa;
-}
-.chakra6:hover{
-	background-color: #e8eaf6;
-}
-.chakra7:hover{
-	background-color: #f3e5f5;
-}
-*/
