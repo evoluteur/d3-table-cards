@@ -1,5 +1,5 @@
 // https://github.com/evoluteur/d3-table-cards
-// (c) 2017 Olivier Giulieri
+// (c) 2018 Olivier Giulieri
 
 var layoutInfo = {
 	table: {
