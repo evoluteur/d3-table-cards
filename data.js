@@ -1,4 +1,4 @@
-// (c) 2017 Michael Gienger (from the book "Healing Crystals")
+// (c) 2018 Michael Gienger (from the book "Healing Crystals")
 // I'm allowed to use the following data by the author. 
 // This data is not public domain!
 
@@ -194,6 +194,6 @@ var data=[
     "chakra": 4,
     "spirit": "Recovery"
   }
-].sort(function(a,b){
-  return a.chakra - b.chakra;
+].sort(function(a, b){
+  return (a.chakra+a.name).localeCompare(b.chakra+b.name);
 });

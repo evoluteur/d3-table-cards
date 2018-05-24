@@ -1,5 +1,5 @@
 // https://github.com/evoluteur/d3-table-cards
-// (c) 2017 Olivier Giulieri
+// (c) 2018 Olivier Giulieri
 
 var layoutInfo = {
 	table: {
@@ -76,13 +76,27 @@ function redraw(style){
 	layout();
 }
 
+curSortField='';
+curSortDirection=1;
 function sort(key){
+	if(key===curSortField){
+		curSortDirection = -curSortDirection;
+	}else{
+		curSortDirection = 1;
+	}
 	var l = getLayoutInfo(curStyle);
-	data.sort(key=='chakra' ? function (a, b) {
-			return (a.chakra+a.name).localeCompare(b.chakra+b.name);
-		} : function (a, b) {
-		  return a.name.localeCompare(b.name);
-		});
+	if(key=='chakra'){
+		data.sort(curSortDirection>0 ? function (a, b) {
+				return (a.chakra+a.name).localeCompare(b.chakra+b.name);
+			} : function (a, b) {
+				return ((8-a.chakra)+a.name).localeCompare((8-b.chakra)+b.name);
+			});
+	}else{
+		data.sort(function (a, b) {
+			  return curSortDirection*a.name.localeCompare(b.name);
+			});
+	}
+	curSortField=key;
 	layout(false, true);
 }
 
