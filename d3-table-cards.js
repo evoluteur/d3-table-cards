@@ -76,7 +76,7 @@ function redraw(style){
 	layout();
 }
 
-curSortField='';
+curSortField='chakra';
 curSortDirection=1;
 function sort(key){
 	if(key===curSortField){
