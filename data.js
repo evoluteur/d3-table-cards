@@ -194,6 +194,6 @@ var data=[
     "chakra": 4,
     "spirit": "Recovery"
   }
-].sort(function(a,b){
-  return a.chakra - b.chakra;
+].sort(function(a, b){
+  return (a.chakra+a.name).localeCompare(b.chakra+b.name);
 });
