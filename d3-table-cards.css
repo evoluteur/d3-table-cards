@@ -8,7 +8,7 @@
 	position: absolute;
 	padding: 10px;
 	background-color: #eee;
-	border: solid 1px silver;
+	border: solid 2px silver;
 	left: 0px; 
 	top: 0px; 
     width: 574px;
@@ -26,10 +26,14 @@
 	position: absolute;
 	border: solid 1px silver;
 	background-color: white;
+	overflow: hidden;
 }
 .item > div{
 	position: absolute;
 	line-height: 18px;
+}
+.item > div:first-child{
+	font-weight: bold;
 }
 .c1{
 	font-weight: bold;
