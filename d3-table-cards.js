@@ -4,10 +4,10 @@
 var layoutInfo = {
 	table: {
 		// ---- row position & size
-		top: function(d, i){return 40+i*29+'px'},
+		top: function(d, i){return 40+i*31+'px'},
 		left: 0,
-		height: 28,
-		width: 590,
+		height: 30,
+		width: 594,
 		// ---- row border-radius
 		radius: 0,
 		// ---- table header
@@ -23,12 +23,12 @@ var layoutInfo = {
 	},
 	cards: {
 		// ---- card position & size
-		top: function(d, i){return Math.floor(i/cardsPerRow)*90+'px'},
-		left: function(d, i){return (i%cardsPerRow)*200+'px'},
-		height: 80,
-		width: 188,
+		top: function(d, i){return Math.floor(i/cardsPerRow)*94+'px'},
+		left: function(d, i){return (i%cardsPerRow)*210+'px'},
+		height: 84,
+		width: 200,
 		// ---- card border-radius
-		radius: '5px',
+		radius: '4px',
 		// ---- table header (hidden)
 		headerOpacity: 0,
 		headerLeft: -650,
@@ -37,21 +37,21 @@ var layoutInfo = {
 		c1Left: 10,
 		c1FontSize: 18,
 		// ---- line 2
-		c2Top: 37,
+		c2Top: 38,
 		c2Left: 10,
 	}
 };
 
 var selector = '.holder';
 var curStyle = 'cards'; // "table" or "cards"
-var animTime = 650;
+var animTime = 600;
 
 var holder;
 var cardsPerRow = 3;
 
 function getLayoutInfo(style){
-	var width = window.innerWidth -20;
-	cardsPerRow = Math.floor(width/200);
+	var width = window.innerWidth -40;
+	cardsPerRow = Math.floor(width/210);
 	return layoutInfo[style];
 }
 
@@ -127,8 +127,8 @@ function layout(skipAnim, skipChildren){
 			.style('left', l.headerLeft);
 
 		var totalHeight = 20+(curStyle==='cards' ?
-				Math.ceil(data.length/cardsPerRow)*90
-				 : 40+data.length*29);
+				Math.ceil(data.length/cardsPerRow)*94
+				 : 40+data.length*31);
 
 		holder.transition(t)
 			.style('height', totalHeight);

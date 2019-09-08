@@ -12,9 +12,7 @@
     <meta name="keywords" content="d3 d3v4 js table card cards view javascript animation gemstones">
 </head>
 <body onresize="redraw()">
-
 	<h1>Gemstones Properties</h1>
-
 	<div id="opts">
 		<div>View:
 			<a href="javascript:redraw('table')">Table</a> /
@@ -25,26 +23,26 @@
 			<a href="javascript:sort('chakra')">Chakra</a>
 		</div>
 	</div>
-
 	<div class="holder">
 		<div class="header sortable">
 			<div onclick="sort('name')">Gemstone</div>
 			<div onclick="sort('chakra')">Spiritual properties</div>
 		</div>
 	</div>
-
 <script>
 window.onload = function(){
 	render();
 }
 </script>
 
+<p><br/></p>
+
 <p>Code available at <a href="https://github.com/evoluteur/d3-table-cards">GitHub</a> under the MIT license.</p>
 
-<p>Data from <a href="https://smile.amazon.com/dp/1844090671" target="crystals">Healing Crystals</a> by 
+<p>Gemstones properties from <a href="https://smile.amazon.com/dp/1844090671" target="crystals">Healing Crystals</a> by 
 Michael Gienger.</p>
 
-<p>&#169; 2018 <a href="https://evoluteur.github.io/">Olivier Giulieri</a>.</p>
+<p>&#169; 2019 <a href="https://evoluteur.github.io/">Olivier Giulieri</a>.</p>
 
 </body>
 </html>
