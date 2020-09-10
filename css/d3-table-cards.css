@@ -2,6 +2,7 @@
 
 .holder{
 	position: relative;
+	margin-bottom: 30px;
 }
 
 .header{
@@ -13,6 +14,7 @@
 	top: 0px; 
     width: 574px;
     height: 19px;
+	opacity: 0;
 }
 .header > div{
 	float: left;
