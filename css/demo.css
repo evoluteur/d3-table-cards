@@ -1,16 +1,13 @@
 
 body{
 	font-family: 'Roboto',arial;
-	min-height: 1250px;
 	margin: 0;
 	padding: 20px 20px 20px 30px;
-	color: black;
-	background-color: white; 
+	color: #0f0f0f;
+	background-color: white;
+  	background-image: url("bg.gif");
 }
 
-h1{
-	margin-bottom: 40px;
-}
 a {
 	text-decoration: none;
     color: #259DCB;
@@ -19,7 +16,15 @@ a:hover {
 	text-decoration: underline;
 	color: navy;
 }
-
+h1{
+	margin: 0 0 30px 0;
+}
+.github{
+	display: inline-block;
+	position: relative;
+	top: 10px;
+	left: 10px;
+}
 #opts{
 	position: absolute;
 	top: 10px;
