@@ -7,5 +7,6 @@ This code uses HTML (with absolute positioning) rather than SVG, and has no depe
 
 Check out [the demo](https://evoluteur.github.io/d3-table-cards/).
 
+![screenshot](https://raw.github.com/evoluteur/d3-table-cards/master/screenshot.gif)
 
 (c) 2020 [Olivier Giulieri](https://evoluteur.github.io/), [MIT license](http://github.com/evoluteur/d3-table-cards/blob/master/LICENSE).
