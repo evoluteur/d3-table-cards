@@ -1,10 +1,10 @@
 // https://github.com/evoluteur/d3-table-cards
 // (c) 2020 Olivier Giulieri
 
-var layoutInfo = {
+const layoutInfo = {
 	table: {
 		// ---- row position & size
-		top: function(d, i){return 40+i*31+'px'},
+		top: (d, i) => 40+i*31+'px',
 		left: '0px',
 		height: '30px',
 		width: '594px',
@@ -23,8 +23,8 @@ var layoutInfo = {
 	},
 	cards: {
 		// ---- card position & size
-		top: function(d, i){return Math.floor(i/cardsPerRow)*94+'px'},
-		left: function(d, i){return (i%cardsPerRow)*210+'px'},
+		top: (d, i) => Math.floor(i/cardsPerRow)*94+'px',
+		left: (d, i) => (i%cardsPerRow)*210+'px',
 		height: '84px',
 		width: '200px',
 		// ---- card border-radius
@@ -42,31 +42,29 @@ var layoutInfo = {
 	}
 };
 
-var selector = '.holder';
-var curStyle = 'cards'; // "table" or "cards"
-var animTime = 600;
-
-var holder;
-var cardsPerRow = 3;
+const selector = '.holder';
+const animTime = 600;
+let curStyle = 'cards'; // "table" or "cards"
+let holder;
+let cardsPerRow = 3;
 
 function getLayoutInfo(style){
-	var width = window.innerWidth -40;
-	cardsPerRow = Math.floor(width/210);
+	cardsPerRow = Math.floor((window.innerWidth -40)/210);
 	return layoutInfo[style];
 }
 
 function render(){
-	var l = getLayoutInfo(curStyle);
+	const l = getLayoutInfo(curStyle);
 	holder = d3.select(selector);
-	var sel = holder.selectAll('.item')
-		.data(data, function(d){return d.name})
+	const sel = holder.selectAll('.item')
+		.data(data, d => d.name)
 		.enter()
-		.append('div').attr('class', function(d){return 'item chakra'+d.chakra});
+		.append('div').attr('class', d => 'item chakra'+d.chakra);
 
 	sel.insert('div').attr('class', 'c1').style('top', l.c1Top)
-		.html(function(d){return d.name});
+		.html(d => d.name);
 	sel.insert('div').attr('class', 'c2').style('top', l.c2Top)
-		.html(function(d){return d.spirit});
+		.html(d => d.spirit);
 
 	layout(true, false);
 }
@@ -76,36 +74,35 @@ function redraw(style){
 	layout();
 }
 
-curSortField='chakra';
-curSortDirection=1;
+let curSortField='chakra';
+let curSortDirection=1;
+
 function sort(key){
 	if(key===curSortField){
 		curSortDirection = -curSortDirection;
 	}else{
 		curSortDirection = 1;
 	}
-	var l = getLayoutInfo(curStyle);
+	getLayoutInfo(curStyle);
 	if(key=='chakra'){
-		data.sort(curSortDirection>0 ? function (a, b) {
-				return (a.chakra+a.name).localeCompare(b.chakra+b.name);
-			} : function (a, b) {
-				return ((8-a.chakra)+a.name).localeCompare((8-b.chakra)+b.name);
-			});
+		data.sort(curSortDirection>0 ? 
+			(a, b) => (a.chakra+a.name).localeCompare(b.chakra+b.name)
+			: 
+			(a, b) => ((8-a.chakra)+a.name).localeCompare((8-b.chakra)+b.name)
+		)
 	}else{
-		data.sort(function (a, b) {
-			  return curSortDirection*a.name.localeCompare(b.name);
-			});
+		data.sort((a, b) => curSortDirection*a.name.localeCompare(b.name))
 	}
 	curSortField=key;
 	layout(false, true);
 }
 
 function layout(skipAnim, skipChildren){
-	var l = getLayoutInfo(curStyle),
+	const l = getLayoutInfo(curStyle),
 		t = d3.transition().duration(skipAnim ? 0 : animTime);
 
 	holder.selectAll('.item')
-		.data(data, function(d){return d.name})
+		.data(data, d => d.name)
 		.transition(t)
 		.style('left', l.left)
 		.style('top', l.top)
@@ -126,7 +123,7 @@ function layout(skipAnim, skipChildren){
 			.style('opacity', l.headerOpacity)
 			.style('left', l.headerLeft);
 
-		var totalHeight = 20+(curStyle==='cards' ?
+		const totalHeight = 20+(curStyle==='cards' ?
 				Math.ceil(data.length/cardsPerRow)*94
 				 : 40+data.length*31);
 
