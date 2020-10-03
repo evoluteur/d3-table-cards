@@ -57,5 +57,6 @@ const layoutInfo = {
 
 ```
 
+Note: The same result can also be achieved [using CSS transitions instead of D3](https://evoluteur.github.io/isomorphic-table-cards/index.html).
 
 (c) 2020 [Olivier Giulieri](https://evoluteur.github.io/), [MIT license](http://github.com/evoluteur/d3-table-cards/blob/master/LICENSE).
