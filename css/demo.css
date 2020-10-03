@@ -2,10 +2,11 @@
 body{
 	font-family: 'Roboto',arial;
 	margin: 0;
-	padding: 20px 20px 20px 30px;
+	padding: 20px 20px 20px 50px;
 	color: #0f0f0f;
 	background-color: white;
-  	background-image: url("bg.gif");
+  	background-image: url("bg0.gif");
+    background-repeat: repeat-y;
 }
 
 a {
@@ -29,7 +30,6 @@ h1{
 	position: absolute;
 	top: 10px;
 	right: 20px;
-	background-color: white;
 	color: grey;
 }
 #opts > div{
