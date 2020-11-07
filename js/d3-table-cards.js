@@ -43,7 +43,7 @@ const layoutInfo = {
 };
 
 const selector = '.holder';
-const animTime = 600;
+const animTime = 500;
 let curStyle = 'cards'; // "table" or "cards"
 let holder;
 let cardsPerRow = 3;
