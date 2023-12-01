@@ -9,58 +9,58 @@ body{
     background-repeat: repeat-y;
 }
 
+h1 {
+  margin-bottom: 40px;
+}
 a {
-	text-decoration: none;
-    color: #259DCB;
+  text-decoration: none;
+  color: #259dcb;
 }
 a:hover {
-	text-decoration: underline;
-	color: navy;
-}
-h1{
-	margin: 0 0 30px 0;
-}
-.github{
-	display: inline-block;
-	position: relative;
-	top: 10px;
-	left: 10px;
-}
-#opts{
-	position: absolute;
-	top: 10px;
-	right: 20px;
-	color: grey;
-}
-#opts > div{
-	padding:5px;
+  text-decoration: underline;
+  color: navy;
 }
 
-.chakra1{
-	background-color: #ffebee;
-	border: solid 2px #f44336;
+#opts {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: grey;
+  padding: 5px 10px;
+  border-radius: 5px;
+  > a {
+    color: white;
+  }
 }
-.chakra2{
-	background-color: #fff3e0;
-	border: solid 2px #ff9800;
+#opts > div {
+  padding: 5px;
 }
-.chakra3{
-	background-color: #fff8e1;
-	border: solid 2px #ffc107;
+
+.chakra1 {
+  background-color: #ffebee;
+  border: solid 2px #f44336;
 }
-.chakra4{
-	background-color: #e8f5e9;
-	border: solid 2px #4caf50;
+.chakra2 {
+  background-color: #fff3e0;
+  border: solid 2px #ff9800;
 }
-.chakra5{
-	background-color: #e0f7fa;
-	border: solid 2px #00bcd4;
+.chakra3 {
+  background-color: #fff8e1;
+  border: solid 2px #ffc107;
 }
-.chakra6{
-	background-color: #e8eaf6;
-	border: solid 2px #3f51b5;
+.chakra4 {
+  background-color: #e8f5e9;
+  border: solid 2px #4caf50;
 }
-.chakra7{
-	background-color: #f3e5f5;
-	border: solid 2px #9c27b0;
+.chakra5 {
+  background-color: #e0f7fa;
+  border: solid 2px #00bcd4;
+}
+.chakra6 {
+  background-color: #e8eaf6;
+  border: solid 2px #3f51b5;
+}
+.chakra7 {
+  background-color: #f3e5f5;
+  border: solid 2px #9c27b0;
 }

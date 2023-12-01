@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "description": "Table/Cards views using D3.js for animated transitions.",
   "author": "Olivier Giulieri (https://evoluteur.github.io/)",
-  "copyright": "(c) 2020 Olivier Giulieri",
+  "copyright": "(c) 2023 Olivier Giulieri",
   "repository": {
     "type": "git",
     "url": "https://github.com/evoluteur/d3-table-cards.git"
@@ -13,7 +13,6 @@
   "bugs": "https://github.com/evoluteur/d3-table-cards/issues",
   "keywords": [
     "d3", 
-    "d3v6", 
     "transition", 
     "transformation",
     "animation", 
@@ -24,6 +23,7 @@
     "cards", 
     "d3js", 
     "javascript", 
+    "d3v4",
     "html"
   ]
 }
