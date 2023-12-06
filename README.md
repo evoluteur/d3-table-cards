@@ -1,7 +1,7 @@
-# D3-Table-Cards &middot; [![GitHub license](https://img.shields.io/github/license/evoluteur/d3-table-cards)](https://github.com/evoluteur/d3-table-cards/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/d3-table-cards)](https://www.npmjs.com/package/d3-table-cards) 
+# D3-Table-Cards &middot; [![GitHub license](https://img.shields.io/github/license/evoluteur/d3-table-cards)](https://github.com/evoluteur/d3-table-cards/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/d3-table-cards)](https://www.npmjs.com/package/d3-table-cards)
 
 
-Example of using D3.js for transformations between table view and cards view, and transitions while sorting elements or resizing the browser.
+Example of using D3.js for transformations between table and cards views, and animated transitions while sorting elements or resizing the browser.
 
 Check out [the demo](https://evoluteur.github.io/d3-table-cards/).
 
@@ -56,6 +56,7 @@ const layoutInfo = {
 };
 
 ```
+
 Note: The same result can also be achieved [using CSS transitions instead of D3](https://evoluteur.github.io/isomorphic-table-cards/index.html).
 
 My other D3 animations: [meet-the-fans](https://evoluteur.github.io/meet-the-fans) and [d3-dual-range-slider](https://evoluteur.github.io/d3-dual-range-slider).
