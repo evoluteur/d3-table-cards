@@ -1,4 +1,4 @@
-// (c) 2023 Michael Gienger (from the book "Healing Crystals")
+// (c) 2024 Michael Gienger (from the book "Healing Crystals")
 // I'm allowed to use the following data by the author.
 // This data is not public domain!
 

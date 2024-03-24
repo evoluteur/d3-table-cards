@@ -62,4 +62,4 @@ Note: The same result can also be achieved [using CSS transitions instead of D3]
 My other D3 animations: [meet-the-fans](https://evoluteur.github.io/meet-the-fans) and [d3-dual-range-slider](https://evoluteur.github.io/d3-dual-range-slider).
 
 
-(c) 2023 [Olivier Giulieri](https://evoluteur.github.io/)
+(c) 2024 [Olivier Giulieri](https://evoluteur.github.io/)
