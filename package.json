@@ -1,9 +1,9 @@
 {
   "name": "d3-table-cards",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Table/Cards views using D3.js for animated transitions.",
   "author": "Olivier Giulieri (https://evoluteur.github.io/)",
-  "copyright": "(c) 2023 Olivier Giulieri",
+  "copyright": "(c) 2024 Olivier Giulieri",
   "repository": {
     "type": "git",
     "url": "https://github.com/evoluteur/d3-table-cards.git"
